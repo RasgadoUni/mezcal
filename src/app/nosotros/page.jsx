@@ -9,8 +9,8 @@ function nosotros() {
   return (
     <div>
         <Header /> {/* Render the Header component */}
-        <div style={{height:'700px',width:'1440px'}}>
-            <Image src={imgpri} alt='agave' style={{height:'700px',width:'1440px'}}/>
+        <div style={{width: '100%', height: 'auto',}}>
+            <Image src={imgpri} alt='agave' style={{width: '100%',height: 'auto'}}/>
         </div>
         <Raiz/>
         <Trad/>

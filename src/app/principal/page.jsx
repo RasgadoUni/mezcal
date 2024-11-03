@@ -10,7 +10,7 @@ function principal() {
   return (
     <div>
       <Header /> {/* Render the Header component */}
-      <MezcalMexicanoComponent /> {/* Render the MezcalMexicanoComponent component */}
+      <MezcalMexicanoComponent style={{width: '100%',height: '700px', maxheight: '700px'}}/> {/* Render the MezcalMexicanoComponent component */}
       <LosFavoritos/>
       <Familia/>
       <Cocteles/>

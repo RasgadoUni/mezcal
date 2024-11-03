@@ -40,8 +40,8 @@ const MezcalMexicanoComponent = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <Image src={imgmezcal} fill alt='mzc'/>
+    <div style={{width: '100%',height: 'auto', maxHeight: '43.75rem'}}>
+      <Image src={imgmezcal} style={{width: '100%',height: 'auto'}} alt='mzc'/>
       <div style={styles.textContainer}>
         <h1 style={styles.topText}>EL VERDADERO</h1>
         

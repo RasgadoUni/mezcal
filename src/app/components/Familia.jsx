@@ -5,16 +5,16 @@ const FamiliaSolmira = () => {
   return (
     <div style={{
       position: 'relative',
-      width: '1440px',
-      height: '700px',
+/*       width: '1440px',
+      height: '700px', */
       
       
     }}> 
-      <Image src={fam} fill alt="familia" style={{zIndex: -1}}/>
+      <Image src={fam} alt="familia" style={{zIndex: -1, width: '100%',height: 'auto',}}/>
       <div style={{
         position: 'absolute',
-        top: '71px',
-        left: '84px',
+        top: '4.438rem',
+        left: '5.25rempx',
         color: '#eeeae8',
         fontFamily: 'Kanit',
         fontWeight: 700,
@@ -25,8 +25,8 @@ const FamiliaSolmira = () => {
       </div>
       <div style={{
         position: 'absolute',
-        top: '111px',
-        left: '79px',
+        top: '6.938rem',
+        left: '4.938rem',
         color: '#eeeae8',
         fontFamily: 'Playfair Display',
         fontWeight: 600,
