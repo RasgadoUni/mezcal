@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use viewport height for responsiveness */
+    width: 100vw; /* Use viewport width for responsiveness */
+    
+}
+
+.content {
+    background-color: #f5e8b3;
+    width: 600px;
+    height: 372px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: #5f2d16;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #5f2d16;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #5f2d16;
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.terms {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #5f2d16;
+}
