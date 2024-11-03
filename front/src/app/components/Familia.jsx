@@ -21,7 +21,7 @@ const FamiliaSolmira = () => {
         fontSize: '2.5rem',
         lineHeight: '100%'
       }}>
-        FAMILIA
+        FAMILIAA
       </div>
       <div style={{
         position: 'absolute',
