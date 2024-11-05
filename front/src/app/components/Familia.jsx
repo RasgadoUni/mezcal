@@ -1,43 +1,57 @@
 import Image from "next/image";
 import fam from "../../../public/img/familia.png";
 
-const FamiliaSolmira = () => {
-  return (
-    <div style={{
-      position: 'relative',
-/*       width: '1440px',
-      height: '700px', */
-      
-      
-    }}> 
-      <Image src={fam} alt="familia" style={{zIndex: -1, width: '100%',height: 'auto',}}/>
-      <div style={{
-        position: 'absolute',
-        top: '4.438rem',
-        left: '5.25rempx',
-        color: '#eeeae8',
-        fontFamily: 'Kanit',
-        fontWeight: 700,
-        fontSize: '2.5rem',
-        lineHeight: '100%'
-      }}>
-        FAMILIAA
-      </div>
-      <div style={{
-        position: 'absolute',
-        top: '6.938rem',
-        left: '4.938rem',
-        color: '#eeeae8',
-        fontFamily: 'Playfair Display',
-        fontWeight: 600,
-        fontSize: '5rem',
-        fontStyle: 'italic',
-        lineHeight: '100%'
-      }}>
-        SOLMIRA
-      </div>
-    </div>
-  );
+import React from 'react';
+
+const SolmiraCard = () => {
+    return (
+        <div style={styles.container}>
+            <Image 
+                src={fam} 
+                alt="Background" 
+                style={styles.image}
+            />
+            <div style={styles.textContainer}>
+                <h1 style={styles.title}>FAMILIA</h1>
+                <h2 style={styles.subtitle}>SOLMIRA</h2>
+            </div>
+        </div>
+    );
 };
 
-export default FamiliaSolmira;
+const styles = {
+  container: {
+      position: 'relative',
+      width: '100%',
+      overflow: 'hidden',
+      height: '700px',
+  },
+  image: {
+      width: '100%',
+      height: '100%',
+  },
+  textContainer: {
+      position: 'absolute',
+      top: '9.5%',
+      left: '5.8%',
+      color: '#eeeae8',
+  },
+  title: {
+      margin: 0,
+      fontSize: '2.5rem',
+      fontWeight: 700,
+      fontFamily: 'Kanit',
+      lineHeight: '100%',
+  },
+  subtitle: {
+      margin: 0,
+      fontSize: '5rem',
+      fontWeight: 600,
+      fontFamily: 'Playfair Display',
+      fontStyle: 'italic',
+      lineHeight: '100%',
+  },
+};
+
+export default SolmiraCard;
+

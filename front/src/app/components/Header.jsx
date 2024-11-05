@@ -18,7 +18,7 @@ const Header = () => {
       display: 'flex' ,
       
       alignItems: 'center',
-       justifyContent: 'center',
+       justifyContent: 'space-evenly',
       /* justifyContent: 'space-evenly',  */
       backgroundColor: '#f4f1ef',
       
@@ -41,16 +41,11 @@ const Header = () => {
         </Link>
       </div>
       <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent:'flex-end',}}>
-<<<<<<< HEAD
         {/* <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blog</span> */}
-        <Link href="../detallePedido">
-          <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
-=======
-        <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blog</span>
+
         <Link href="../detallePedido">
         <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
 
->>>>>>> 2f55d7a5e442a03e65a5894d6f2bc1180177e266
         </Link>
         <Link href="../sesion">
           <img src="./img/user.svg" alt="user" style={{ width: '31px', height: '31px' }} />
