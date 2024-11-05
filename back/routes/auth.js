@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
-// Importa bcrypt para manejar contraseñas (no olvides instalarlo)
-const bcrypt = require('bcrypt');
 
 // Ruta para manejar el inicio de sesión
 router.post('/login', (req, res) => {
@@ -20,21 +18,16 @@ router.post('/login', (req, res) => {
     }
 
     const usuario = results[0];
-    // Comparar contraseñas usando bcrypt
-    bcrypt.compare(contrasena, usuario.contrasena, (err, match) => {
-      if (err) {
-        console.error('Error al comparar contraseñas:', err);
-        return res.status(500).json({ message: 'Error de autenticación' });
-      }
 
-      if (!match) {
-        return res.status(401).json({ message: 'Contraseña incorrecta' });
-      }
+    // Comparar las contraseñas en texto plano
+    if (usuario.contrasena !== contrasena) {
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
+    }
 
-      // Autenticación exitosa
-      res.status(200).json({ message: 'Inicio de sesión exitoso' });
-    });
+    // Autenticación exitosa
+    res.status(200).json({ message: 'Inicio de sesión exitoso' });
   });
 });
 
 module.exports = router;
+

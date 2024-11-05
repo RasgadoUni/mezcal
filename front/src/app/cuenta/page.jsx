@@ -5,16 +5,13 @@ import React, { useState } from 'react';
 import imagenbg from '../../../public/img/primera.jpg';
 import beche from '../../../public/img/Bechee.jpg';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const SignInForm = () => {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [error, setError] = useState('');
-  const router = useRouter();
-
-  //console.log(router); // Esto imprimirá el objeto router en la consola
-
+  const router = useRouter(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +31,9 @@ const SignInForm = () => {
       });
 
       if (response.ok) {
-        router.push('../nosotros/page.jsx'); // Cambia esto a la página a la que quieras redirigir
+        const data = await response.json();
+        console.log('Inicio de sesión exitoso:', data); 
+        router.push('../principal'); 
       } else {
         const data = await response.json();
         setError(data.message || 'Credenciales incorrectas');
@@ -46,35 +45,10 @@ const SignInForm = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh'
-      }}
-    >
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Image src={imagenbg} fill alt='agave' />
-      <div
-        style={{
-          width: '540px',
-          height: '370px',
-          backgroundColor: '#f5e7be',
-          padding: '20px',
-          boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.2)',
-          position: 'relative'
-        }}
-      >
-        <h1
-          style={{
-            fontFamily: 'Playfair Display',
-            fontWeight: 700,
-            fontSize: '48px',
-            textAlign: 'center',
-            color: '#5f2d16ff',
-            marginBottom: '20px'
-          }}
-        >
+      <div style={{ width: '540px', height: '370px', backgroundColor: '#f5e7be', padding: '20px', boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.2)', position: 'relative' }}>
+        <h1 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '48px', textAlign: 'center', color: '#5f2d16ff', marginBottom: '20px' }}>
           Inicia Sesión
         </h1>
 
@@ -115,28 +89,12 @@ const SignInForm = () => {
               margin: '15px',
             }}
           />
-          {error && (
-            <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
-          )}
+          {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
           <Image src={beche} style={{ width: '175px', height: '219px', position: 'absolute', right: '35px', top: '80px', borderRadius: '10px' }} alt='agave' />
-          <p
-            style={{
-              fontFamily: 'Kanit',
-              fontWeight: 700,
-              fontSize: '16px',
-              textAlign: 'center',
-              color: '#5f2d16ff',
-              margin: '35px 0 10px 0 '
-            }}
-          >
-            Si todavía no tienes cuenta, <Link href='../sesion'> <span style={{ color: '#e14d2aff', cursor: 'pointer' }}>crea una</span></Link>
+          <p style={{ fontFamily: 'Kanit', fontWeight: 700, fontSize: '16px', textAlign: 'center', color: '#5f2d16ff', margin: '35px 0 10px 0 ' }}>
+            Si todavía no tienes cuenta, <Link href='../sesion'><span style={{ color: '#e14d2aff', cursor: 'pointer' }}>crea una</span></Link>
           </p>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-          >
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button
               type="submit"
               style={{
@@ -161,4 +119,5 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
+
 
