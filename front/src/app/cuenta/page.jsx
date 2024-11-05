@@ -15,12 +15,12 @@ const SignInForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!correo || !contrasena) {
       setError('Por favor, completa todos los campos.');
       return;
     }
-
+  
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
@@ -29,11 +29,12 @@ const SignInForm = () => {
         },
         body: JSON.stringify({ correo, contrasena }),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
-        console.log('Inicio de sesión exitoso:', data); 
-        router.push('../principal'); 
+        console.log('Inicio de sesión exitoso:', data); // Verifica el resultado
+        localStorage.setItem('loggedIn', 'yes'); // Guarda en localStorage el estado de inicio de sesión
+        router.push('../principal'); // Redirige a la página deseada
       } else {
         const data = await response.json();
         setError(data.message || 'Credenciales incorrectas');
@@ -43,6 +44,7 @@ const SignInForm = () => {
       setError('Error al conectar con el servidor');
     }
   };
+  
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
