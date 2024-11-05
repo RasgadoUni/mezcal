@@ -25,8 +25,8 @@ const Header = () => {
     }}>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-start'}}>
         <Link href="../nosotros"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Nosotros</span></Link>
-        <span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Productos</span>
-        <span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Cócteles</span>
+        <Link href="../Productos"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Productos</span></Link>
+        <Link href="../Recetas"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Cócteles</span></Link>
       </div>
       <div style={{ textAlign: 'center', justifyContent:'center',}}>
         <Link href='../principal'> 
@@ -41,8 +41,10 @@ const Header = () => {
         </Link>
       </div>
       <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent:'flex-end',}}>
-        <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blog</span>
-        <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
+        {/* <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blog</span> */}
+        <Link href="../detallePedido">
+          <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
+        </Link>
         <Link href="../sesion">
           <img src="./img/user.svg" alt="user" style={{ width: '31px', height: '31px' }} />
         </Link>
