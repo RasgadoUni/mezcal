@@ -12,7 +12,7 @@ const SignInForm = () => {
   const [contrasena, setContrasena] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
-   
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,9 +33,9 @@ const SignInForm = () => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log('Inicio de sesión exitoso:', data); // Verifica el resultado
-        localStorage.setItem('loggedIn', 'yes'); // Guarda en localStorage el estado de inicio de sesión
-        router.push('../principal'); // Redirige a la página deseada
+        console.log('Inicio de sesión exitoso:', data); 
+        localStorage.setItem('loggedIn', 'yes'); 
+        router.push('../principal');
       } else {
         const data = await response.json();
         setError(data.message || 'Credenciales incorrectas');
