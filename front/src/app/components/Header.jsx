@@ -41,7 +41,7 @@ const Header = () => {
         </Link>
       </div>
       <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent:'flex-end',}}>
-        <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blog</span>
+        <span style={{ font: '700 20px Kanit', color: '#786b3a' }}>Blo</span>
         <Link href="../detallePedido">
         <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
 
