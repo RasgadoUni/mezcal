@@ -1,13 +1,24 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 export default function DetallePedido() {
+  const router = useRouter();
   const [productos, setProductos] = useState([]);
   const [detalles, setDetalles] = useState([]);
   const [cantidad, setCantidad] = useState(1);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
   useEffect(() => {
+    const loggedIn = localStorage.getItem('loggedIn');
+    
+    if (loggedIn !== 'yes') {
+      // Si no está logueado, redirige al login
+      router.push('../cuenta'); 
+    } 
+
+
     fetch('http://localhost:5000/api/producto')
       .then((res) => {
         if (!res.ok) {
@@ -27,7 +38,7 @@ export default function DetallePedido() {
       })
       .then((data) => setDetalles(data))
       .catch((error) => console.error(error));
-  }, []);
+  }, []); 
 
   const agregarDetalle = () => {
     if (!productoSeleccionado) return alert('Por favor, selecciona un producto.');
@@ -56,7 +67,7 @@ export default function DetallePedido() {
         alert(data.message);
         setDetalles(detalles.filter((item) => item.idDetalle !== idDetalle));
       });
-  };
+  }
 
   return (
     <div className="container" style={{ backgroundColor: '#f0fff4', padding: '20px', borderRadius: '8px' }}>
