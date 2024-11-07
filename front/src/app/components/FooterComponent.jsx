@@ -58,9 +58,13 @@ const Footer = () => {
                   <Link href='../nosotros'>
                     <div>Nosotros</div>
                   </Link>
-                  <div>Productos</div>
-                  <div>Cócteles</div>
-                  <div>Blog</div>
+                  <Link href='../Productos'>
+                    <div>Productos</div>
+                  </Link>
+                  <Link href='../Recetas'>
+                    <div>Cócteles</div>
+                  </Link>
+                  
               </div>
           </div>
       </div>

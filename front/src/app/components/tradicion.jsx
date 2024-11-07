@@ -77,6 +77,7 @@ const imageGalleryStyles = {
     container: {
         display: 'flex',
         justifyContent: 'space-evenly',
+        with: '100%',
     },
     image: {
         width: '352px',

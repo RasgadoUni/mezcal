@@ -15,9 +15,9 @@ const Header = () => {
     }}>
       {/* Enlaces de la izquierda */}
       <div style={{ display: 'flex', gap: '20px' }}>
-        <Link href="/nosotros"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Nosotros</span></Link>
-        <Link href="/productos"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Productos</span></Link>
-        <Link href="/recetas"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Cócteles</span></Link>
+        <Link href="../nosotros"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Nosotros</span></Link>
+        <Link href="../Productos"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Productos</span></Link>
+        <Link href="../Recetas"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Cócteles</span></Link>
       </div>
 
       {/* Título centrado completamente */}
@@ -40,11 +40,11 @@ const Header = () => {
 
       {/* Enlaces de la derecha */}
       <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-        <Link href="/blog"><span style={{ font: '700 1.3rem Kanit', color: '#786b3a' }}>Blog</span></Link>
-        <Link href="/detallePedido">
+        
+        <Link href="../detallePedido">
           <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
         </Link>
-        <Link href="/sesion">
+        <Link href="../sesion">
           <img src="./img/user.svg" alt="user" style={{ width: '31px', height: '31px' }} />
         </Link>
       </div>
