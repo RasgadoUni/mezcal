@@ -32,6 +32,26 @@ router.post('/', (req, res) => {
   );
 });
 
+// Modificar la cantidad de un detalle del pedido
+router.put('/', (req, res) => {
+  const { idDetalle, cantidad } = req.body;
+
+  if (!idDetalle || cantidad < 1) {
+    return res.status(400).json({ message: 'Datos inválidos' });
+  }
+
+  db.query(
+    'UPDATE pedidodetalle SET cantidad = ? WHERE idDetalle = ?',
+    [cantidad, idDetalle],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: 'Error al actualizar la cantidad del detalle de pedido' });
+      }
+      res.status(200).json({ message: 'Cantidad actualizada exitosamente' });
+    }
+  );
+});
+
 // Eliminar un detalle del pedido
 router.delete('/', (req, res) => {
   const { idDetalle } = req.query;
@@ -49,3 +69,4 @@ router.delete('/', (req, res) => {
 });
 
 module.exports = router;
+
