@@ -31,7 +31,7 @@ const styles = {
         height: '100%',
     },
     textContainer: {
-        position: 'absolute',
+        position: 'flex',
         top: '9%',
         left: '22.5%',
         textAlign: 'center',
