@@ -1,9 +1,15 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import imagenbg from '../../public/img/primera.jpg';
 import './AgeConfirmation.css';
+import { useEffect } from 'react';
+
 
 const AgeConfirmation = () => {
+  useEffect(() => {
+    localStorage.setItem('loggedIn', 'no');
+}, []);
     return (
         <div className="container">
           <Image src={imagenbg} fill style={{zIndex: -1}} alt='Agaves'/>
