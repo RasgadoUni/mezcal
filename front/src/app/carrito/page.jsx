@@ -52,8 +52,7 @@ const PaymentDetails = () => {
       </div>
       <div style={styles.costDetails}>
         <label style={styles.label}>Envío</label>
-        <p style={styles.summaryText}>Normal + $150</p>
-        <p style={styles.summaryText}>Rápido + $250</p>
+        <p style={styles.summaryText}>+ $150</p>
       </div>
       <div style={styles.costDetails}>
         <label style={styles.label}>Total</label>

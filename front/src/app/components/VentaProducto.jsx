@@ -19,7 +19,7 @@ const VentaCard = () => {
 
   return (
     <div style={styles.card}>
-      <Image src={imgnobg} alt="Product" style={{height: '127px', width: '82px', marginRight: '16px'}} />
+      <Image src={imgnobg} alt="Product" style={{margin:'10px',height: '120px', width: '70px', marginRight: '16px'}} />
 
       <div style={styles.info}>
         <h2 style={styles.title}>Mezcal Espadín</h2>
@@ -60,6 +60,7 @@ const styles = {
   },
   info: {
     flexGrow: 1,
+    margin:'10px',
   },
   title: {
     fontFamily: 'Playfair Display, serif',
@@ -81,9 +82,8 @@ const styles = {
     fontSize: '14px',
     color: '#5f2d16',
     padding: '4px',
-    borderRadius: '4px',
     border: 'none',
-    backgroundColor: '#e0d3b8',
+    backgroundColor: '#F1E8E0',
   },
   quantityContainer: {
     display: 'flex',
