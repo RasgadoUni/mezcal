@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/FooterComponent';
+import Mezcalito from '../../../public/img/Mezcalito.jpg'
 import './app.css';
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
 
       {/* Imagen de fondo */}
       <div className="hero-section">
-        <img src="ruta-de-la-imagen.jpg" alt="Tragos y limones" className="hero-image" />
+        <Image src={Mezcalito} alt='Mezcalito' style={{width:'100%', height:'auto'}}/>
       </div>
 
       {/* Sección de productos */}

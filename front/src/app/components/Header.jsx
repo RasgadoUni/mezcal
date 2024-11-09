@@ -41,7 +41,7 @@ const Header = () => {
       {/* Enlaces de la derecha */}
       <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
         
-        <Link href="../detallePedido">
+        <Link href="../carrito">
           <img src="./img/shoping.svg" alt="shopping bag" style={{ width: '31px', height: '31px' }} />
         </Link>
         <Link href="../sesion">
