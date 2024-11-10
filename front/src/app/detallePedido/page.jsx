@@ -4,13 +4,24 @@ import Header from '../components/Header';
 import Image from 'next/image';
 import imgnobg from '../../../public/img/mezcaaaal2.png';
 import Footer from '../components/FooterComponent';
+import { useRouter } from 'next/navigation';
 
 const DetallePedidoCheckout = () => {
+  const router = useRouter();
   const [productos, setProductos] = useState([]);
   const [detalles, setDetalles] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [cantidad, setCantidad] = useState(1);
   const [subtotal, setSubtotal] = useState(0);
+  const [direccion, setDireccion] = useState('');
+  const [direccion2, setDireccion2] = useState('');
+  const [ciudad, setCiudad] = useState('');
+  const [estado, setEstado] = useState('');
+  const [codigoPostal, setCodigoPostal] = useState('');
+  const [nombreTarjeta, setNombreTarjeta] = useState('');
+  const [numeroTarjeta, setNumeroTarjeta] = useState('');
+  const [fechaTarjeta, setFechaTarjeta] = useState('');
+  const [cvvTarjeta, setCvvTarjeta] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:5000/api/producto')
@@ -77,89 +88,119 @@ const DetallePedidoCheckout = () => {
     setSubtotal(total);
   };
 
+  const finalizarCompra = async () => {
+
+    const datosCompra = {
+      subtotal,
+      
+      direccion,      
+      direccion_2: direccion2,  
+      ciudad,           
+      estado,            
+      codigo_postal: codigoPostal,  
+      nombre_tarjeta: nombreTarjeta, 
+      numero_tarjeta: numeroTarjeta, 
+      fecha_tarjeta: fechaTarjeta,    
+      cvv_tarjeta: cvvTarjeta,        
+    };
+  
+    console.log(datosCompra);  
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/detalle_pedido', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosCompra),
+      });
+    
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error al finalizar la compra: ${errorText}`);
+      }
+    
+      const result = await response.json();
+      if (result.id) {
+        localStorage.setItem('orderId', result.id);      
+          router.push(`/purchase-ticket`);
+      } else {
+        alert("Error al finalizar la compra.");
+      }
+    } catch (error) {
+      console.error("Error en la compra:", error);
+      alert(`Hubo un problema al procesar la compra: ${error.message}`);
+    }
+  };
+  
+  
   return (
     <div>
       <Header/>
       <div style={styles.mainContainer}>
       
-      <header style={styles.header}>Carrito de Compras</header>
+        <header style={styles.header}>Carrito de Compras</header>
       
-      <div style={styles.contentContainer}>
-        {/* Lista de productos */}
-        <div style={styles.leftColumn}>
-          <h2 style={styles.cartTitle}>Detalles del Pedido</h2>
-          {detalles.map((detalle) => (
-            <div key={detalle.idDetalle} style={styles.card}>
-              <Image src={imgnobg} alt="Producto" style={styles.image} />
-              <div style={styles.info}>
-                <h3 style={styles.title}>{detalle.nombre}</h3>
-                <p style={styles.price}>${detalle.precio}</p>
-                <p style={styles.quantityContainer}>
-                  <button onClick={() => modificarCantidad(detalle.idDetalle, detalle.cantidad - 1)} style={styles.quantityButton}>-</button>
-                  {detalle.cantidad}
-                  <button onClick={() => modificarCantidad(detalle.idDetalle, detalle.cantidad + 1)} style={styles.quantityButton}>+</button>
-                </p>
-                <img src="./img/basura.svg" alt="Eliminar" style={styles.deleteIcon} onClick={() => eliminarDetalle(detalle.idDetalle)} />
+        <div style={styles.contentContainer}>
+          <div style={styles.leftColumn}>
+            <h2 style={styles.cartTitle}>Detalles del Pedido</h2>
+            {detalles.map((detalle) => (
+              <div key={detalle.idDetalle} style={styles.card}>
+                <Image src={imgnobg} alt="Producto" style={styles.image} />
+                <div style={styles.info}>
+                  <h3 style={styles.title}>{detalle.nombre}</h3>
+                  <p style={styles.price}>${detalle.precio}</p>
+                  <p style={styles.quantityContainer}>
+                    <button onClick={() => modificarCantidad(detalle.idDetalle, detalle.cantidad - 1)} style={styles.quantityButton}>-</button>
+                    {detalle.cantidad}
+                    <button onClick={() => modificarCantidad(detalle.idDetalle, detalle.cantidad + 1)} style={styles.quantityButton}>+</button>
+                  </p>
+                  <img src="./img/basura.svg" alt="Eliminar" style={styles.deleteIcon} onClick={() => eliminarDetalle(detalle.idDetalle)} />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Información de pago y envío */}
-        <div style={styles.rightColumn}>
-          <div style={styles.paymentDetails}>
-            <h2 style={styles.sectionTitle}>Datos de Pago</h2>
-            <label style={styles.label}>Nombre en la tarjeta</label>
-            <input type="text" placeholder="Nombre" style={styles.input} />
-            <label style={styles.label}>Número de tarjeta</label>
-            <input type="text" placeholder="0000 0000 0000 0000" style={styles.input} />
-            <div style={styles.paymentRow}>
-              <div>
-                <label style={styles.label}>Fecha</label>
-                <input type="text" placeholder="12/24" style={styles.input} />
-              </div>
-              <div>
-                <label style={styles.label}>CVV</label>
-                <input type="text" placeholder="123" style={styles.input} />
-              </div>
-            </div>
-            <div style={styles.costDetails}>
-              <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)} mxn</span>
-            </div>
-            <div style={styles.costDetails}>
-              <span>Envío</span>
-              <span>$150.00 mxn</span>
-            </div>
-            <div style={styles.costDetails}>
-              <strong>Total</strong>
-              <strong>${(subtotal + 150).toFixed(2)} mxn</strong>
-            </div>
+            ))}
           </div>
 
-          <div style={styles.shippingDetails}>
-            <h2 style={styles.sectionTitle}>Datos de Envío</h2>
-            <label style={styles.label}>Dirección</label>
-            <input type="text" style={styles.input} />
-            <label style={styles.label}>Dirección 2</label>
-            <input type="text" style={styles.input} />
-            <label style={styles.label}>Ciudad</label>
-            <input type="text" style={styles.input} />
-            <label style={styles.label}>Estado</label>
-            <input type="text" style={styles.input} />
-            <label style={styles.label}>Código Postal</label>
-            <input type="text" style={styles.input} />
-          </div>
+          <div style={styles.rightColumn}>
+            <div style={styles.paymentDetails}>
+              <h2 style={styles.sectionTitle}>Datos de Pago</h2>
+              <input type="text" placeholder="Nombre en la tarjeta" value={nombreTarjeta} onChange={(e) => setNombreTarjeta(e.target.value)} style={styles.input} />
+              <input type="text" placeholder="Número de tarjeta" value={numeroTarjeta} onChange={(e) => setNumeroTarjeta(e.target.value)} style={styles.input} />
+              <div style={styles.paymentRow}>
+                <input type="text" placeholder="Fecha de vencimiento" value={fechaTarjeta} onChange={(e) => setFechaTarjeta(e.target.value)} style={styles.input} />
+                <input type="text" placeholder="CVV" value={cvvTarjeta} onChange={(e) => setCvvTarjeta(e.target.value)} style={styles.input} />
+              </div>
+              <div style={styles.costDetails}>
+                <span>Subtotal</span>
+                <span>${subtotal.toFixed(2)} mxn</span>
+              </div>
+              <div style={styles.costDetails}>
+                <span>Envío</span>
+                <span>$150.00 mxn</span>
+              </div>
+              <div style={styles.costDetails}>
+                <strong>Total</strong>
+                <strong>${(subtotal + 150).toFixed(2)} mxn</strong>
+              </div>
+            </div>
+
+            <div style={styles.shippingDetails}>
+              <h2 style={styles.sectionTitle}>Datos de Envío</h2>
+              <input type="text" placeholder="Dirección" value={direccion} onChange={(e) => setDireccion(e.target.value)} style={styles.input} />
+              <input type="text" placeholder="Dirección 2" value={direccion2} onChange={(e) => setDireccion2(e.target.value)} style={styles.input} />
+              <input type="text" placeholder="Ciudad" value={ciudad} onChange={(e) => setCiudad(e.target.value)} style={styles.input} />
+              <input type="text" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} style={styles.input} />
+              <input type="text" placeholder="Código Postal" value={codigoPostal} onChange={(e) => setCodigoPostal(e.target.value)} style={styles.input} />
+            </div>
           
-          <button style={styles.checkoutButton}>Finalizar Compra</button>
+            <button onClick={finalizarCompra} style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#b59a49', color: '#fff', cursor: 'pointer' }}>Finalizar Compra</button>
+          </div>
         </div>
       </div>
-      
-    </div>
       <Footer/>
     </div>
   );
 };
+
+
 
 // Estilos
 const styles = {
