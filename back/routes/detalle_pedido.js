@@ -1,9 +1,8 @@
-// routes/detalle_pedido.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Ruta POST para agregar detalle de pedido
+
 router.post('/', (req, res) => {
     const {
       subtotal,
@@ -18,15 +17,12 @@ router.post('/', (req, res) => {
       cvv_tarjeta
     } = req.body;
   
-    // Validación de datos requeridos
     if (!subtotal || !direccion || !ciudad || !estado || !codigo_postal || !nombre_tarjeta || !numero_tarjeta || !fecha_tarjeta || !cvv_tarjeta) {
       return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
   
-    // Envío fijo (en este caso, 150)
     const envio = 150;
   
-    // Calcular el total
     const total = subtotal + envio;
   
     // Consulta SQL para insertar el detalle de pedido
@@ -53,11 +49,10 @@ router.post('/', (req, res) => {
       res.status(200).json({ message: 'Compra guardada exitosamente', id: result.insertId });
     });
 });
-// Ruta GET para obtener un detalle de pedido por su id
+
 router.get('/:id', (req, res) => {
-    const { id } = req.params;  // Obtener el id de la URL
+    const { id } = req.params;  
   
-    // Consulta SQL para obtener el detalle del pedido
     const query = 'SELECT * FROM detalle_pedido WHERE id = ?';
   
     db.query(query, [id], (err, result) => {
@@ -70,7 +65,7 @@ router.get('/:id', (req, res) => {
         return res.status(404).json({ error: 'Pedido no encontrado' });
       }
   
-      res.status(200).json(result[0]);  // Enviar el primer resultado como respuesta
+      res.status(200).json(result[0]);  
     });
   });
 

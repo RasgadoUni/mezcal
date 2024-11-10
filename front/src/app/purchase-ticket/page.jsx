@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-// Estilos del ticket
 const styles = {
   container: {
     maxWidth: '900px',
@@ -54,11 +53,9 @@ const PurchaseTicket = () => {
   const [pedido, setPedido] = useState(null);
 
   useEffect(() => {
-    // Recuperar el ID del pedido desde localStorage
     const orderId = localStorage.getItem('orderId');
 
     if (orderId) {
-      // Realizar la solicitud GET para obtener los detalles del pedido
       fetch(`http://localhost:5000/api/detalle_pedido/${orderId}`)
         .then((res) => res.json())
         .then((data) => setPedido(data))
@@ -66,7 +63,7 @@ const PurchaseTicket = () => {
     } else {
       console.log('No se encontró el ID del pedido en localStorage');
     }
-  }, []); // Solo se ejecuta una vez al cargar el componente
+  }, []); 
 
   if (!pedido) return <p>Cargando ticket...</p>;
 

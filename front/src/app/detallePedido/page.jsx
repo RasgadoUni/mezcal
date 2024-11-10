@@ -13,8 +13,6 @@ const DetallePedidoCheckout = () => {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [cantidad, setCantidad] = useState(1);
   const [subtotal, setSubtotal] = useState(0);
-
-  // Estado para los datos de envío y pago
   const [direccion, setDireccion] = useState('');
   const [direccion2, setDireccion2] = useState('');
   const [ciudad, setCiudad] = useState('');
@@ -95,18 +93,18 @@ const DetallePedidoCheckout = () => {
     const datosCompra = {
       subtotal,
       
-      direccion,         // Utilizar el valor del estado
-      direccion_2: direccion2,  // Utilizar el valor del estado
-      ciudad,            // Utilizar el valor del estado
-      estado,            // Utilizar el valor del estado
-      codigo_postal: codigoPostal,  // Utilizar el valor del estado
-      nombre_tarjeta: nombreTarjeta,  // Utilizar el valor del estado
-      numero_tarjeta: numeroTarjeta,  // Utilizar el valor del estado
-      fecha_tarjeta: fechaTarjeta,    // Utilizar el valor del estado
-      cvv_tarjeta: cvvTarjeta,        // Utilizar el valor del estado
+      direccion,      
+      direccion_2: direccion2,  
+      ciudad,           
+      estado,            
+      codigo_postal: codigoPostal,  
+      nombre_tarjeta: nombreTarjeta, 
+      numero_tarjeta: numeroTarjeta, 
+      fecha_tarjeta: fechaTarjeta,    
+      cvv_tarjeta: cvvTarjeta,        
     };
   
-    console.log(datosCompra);  // Verifica los datos antes de enviarlos
+    console.log(datosCompra);  
     
     try {
       const response = await fetch('http://localhost:5000/api/detalle_pedido', {
@@ -115,7 +113,6 @@ const DetallePedidoCheckout = () => {
         body: JSON.stringify(datosCompra),
       });
     
-      // Verificar si la respuesta es JSON
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Error al finalizar la compra: ${errorText}`);
