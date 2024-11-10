@@ -2,7 +2,12 @@ import React from 'react';
 
 import ProductCard from './ProductCard';
 
-
+const productos = [
+    { idProducto: 1, nombre: 'Mezcal Espadín 350ml', precio: 400.00 },
+    { idProducto: 3, nombre: 'Mezcal Cuishe 350ml', precio: 400.00 },
+    { idProducto: 5, nombre: 'Mezcal Tobalá 350ml', precio: 400.00 },
+    { idProducto: 12, nombre: 'Mezcal Jabalí 700ml', precio: 800.00 },
+];
 function Header() {
     return (
         <div style={styles.headerContainer}>
@@ -24,10 +29,15 @@ function LosFavoritos() {
             <Header />
             </div>
             <div style={styles.pageContainer}>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+            {productos.map((producto) => (
+                    <ProductCard
+                        key={producto.idProducto}
+                        idProducto={producto.idProducto}
+                        nombre={producto.nombre}
+                        precio={producto.precio}
+                        imagen={producto.imagen}
+                    />
+                ))}
             </div>
         </div>
     );

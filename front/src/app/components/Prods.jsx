@@ -27,7 +27,6 @@ const TitleHeader = () => {
     );
 };
 
-// Datos de productos (podrías traerlos de una API o un archivo separado)
 const productos = [
     { idProducto: 1, nombre: 'Mezcal Espadín 350ml', precio: 400.00 },
     { idProducto: 2, nombre: 'Mezcal Espadín 700ml', precio: 800.00 },
