@@ -1,7 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
 import Image from 'next/image';
 import imgnobg from '../../../public/img/mezcaaaal2.png';
+import Footer from '../components/FooterComponent';
 
 const DetallePedidoCheckout = () => {
   const [productos, setProductos] = useState([]);
@@ -76,7 +78,10 @@ const DetallePedidoCheckout = () => {
   };
 
   return (
-    <div style={styles.mainContainer}>
+    <div>
+      <Header/>
+      <div style={styles.mainContainer}>
+      
       <header style={styles.header}>Carrito de Compras</header>
       
       <div style={styles.contentContainer}>
@@ -149,6 +154,9 @@ const DetallePedidoCheckout = () => {
           <button style={styles.checkoutButton}>Finalizar Compra</button>
         </div>
       </div>
+      
+    </div>
+      <Footer/>
     </div>
   );
 };
