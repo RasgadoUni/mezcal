@@ -57,12 +57,14 @@ body {
   .products-section {
     padding: 40px;
     background-color: #f7f3ef;
+    flex-wrap: wrap;
   }
   
   .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    
   }
   
   .product-card {

@@ -2,6 +2,9 @@ import Image from 'next/image';
 import Margarita from '../../../public/img/Receta1.png';
 
 const MargaritaCard = () => {
+
+  
+
   const cardStyle = {
     width: '250px',
     height: '346px',
