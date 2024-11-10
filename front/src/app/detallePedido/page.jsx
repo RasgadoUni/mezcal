@@ -23,7 +23,15 @@ const DetallePedidoCheckout = () => {
   const [fechaTarjeta, setFechaTarjeta] = useState('');
   const [cvvTarjeta, setCvvTarjeta] = useState('');
 
+  
+
   useEffect(() => {
+    const loggedIn = localStorage.getItem('loggedIn');
+    if (loggedIn !== 'yes') {
+      router.push('../cuenta'); 
+      return;
+    }
+
     fetch('http://localhost:5000/api/producto')
       .then((res) => res.json())
       .then((data) => setProductos(data))
