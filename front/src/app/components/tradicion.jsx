@@ -55,17 +55,17 @@ const ImageGallery = () => {
     return (
         <div style={imageGalleryStyles.container}>
             <img 
-                src="https://placeholder.pics/svg/355x263" 
+                src="./img/img1.svg" 
                 alt="Image 1" 
                 style={imageGalleryStyles.image}
             />
             <img 
-                src="https://placeholder.pics/svg/352x263" 
+                src="./img/img2.svg" 
                 alt="Image 2" 
                 style={imageGalleryStyles.image}
             />
             <img 
-                src="https://placeholder.pics/svg/352x263" 
+                src="./img/img3.svg" 
                 alt="Image 3" 
                 style={imageGalleryStyles.image}
             />
