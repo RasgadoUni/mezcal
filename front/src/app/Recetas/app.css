@@ -1,0 +1,148 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f3ef;
+    color: #333;
+  }
+  
+  /* Encabezado */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f1e3d3;
+    border-bottom: 1px solid #d3c4b1;
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #5b4238;
+  }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-list li {
+    display: inline;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #5b4238;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  /* Imagen de fondo */
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Sección de productos */
+  .products-section {
+    padding: 40px;
+    background-color: #f7f3ef;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .product-card {
+
+    border-radius: 8px;
+
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .product-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .product-name {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #786B3A;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    color: #5F2D16;
+  }
+  
+  .product-button {
+    background-color: #786B3A;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .product-button:hover {
+    background-color: #734a31;
+  }
+  
+  /* Pie de página */
+  .footer {
+    background-color: #5b4238;
+    color: #fff;
+    padding: 40px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-left h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .footer-contact p,
+  .footer-menu ul {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .footer-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-menu li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-menu a {
+    text-decoration: none;
+    color: #d3c4b1;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+  }

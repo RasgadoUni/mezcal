@@ -1,6 +1,5 @@
 import React from 'react';
 import Recetaw from './Receta';
-import Product from './VentaProducto';
 
 const RecipesSection = () => {
     return (
@@ -11,7 +10,6 @@ const RecipesSection = () => {
                 <Recetaw/>
                 <Recetaw/>
                 <Recetaw/>
-                <Product/>
             </div>
         </div>
     );
