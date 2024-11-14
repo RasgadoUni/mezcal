@@ -46,8 +46,12 @@ const Footer = () => {
                   <div>+55 961 000 0000</div>
                   <div style={{ textDecoration: 'underline' }}>correo@mail.com</div>
                   <div style={{marginTop:'10px'}}>
-                      <img src="./img/face.svg" alt="face" style={{ width: '25px', height: '25px', marginRight: '10px'}}/>
-                      <img src="./img/insta.svg" alt="insta" style={{ width: '25px', height: '25px' }} />
+                      <Link href='https://www.facebook.com/people/Mezcal-BECHE/61557630417395/'>
+                        <img src="./img/face.svg" alt="face" style={{ width: '25px', height: '25px', marginRight: '10px'}}/>
+                      </Link>
+                        <Link href='https://www.instagram.com/beche.mezcal/'>
+                            <img src="./img/insta.svg" alt="insta" style={{ width: '25px', height: '25px' }} />
+                        </Link>
                   </div>
               </div>
               <div>
